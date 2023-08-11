@@ -42,6 +42,7 @@ if __name__ == '__main__':
     # Assume role using gcp service account token
     sts = boto3.client('sts', aws_access_key_id='', aws_secret_access_key='')
 
+    # Sam: this will default to a expiration for 1 hour from creation. We can pass in a DurationSeconds parameter ranging from 15 minutes to the maximum session duration setting for the role. The max session duration can be 1-12 hours
     res = sts.assume_role_with_web_identity(
         RoleArn=aws_role_arn,
         WebIdentityToken=token,
